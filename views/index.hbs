@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {{> head}}
+</head>
+
+<body>
+
+  <div class="hero_area">
+    <div class="bg-box">
+      <img src="images/hero-bg.jpg" alt="">
+    </div>
+    <!-- header section strats -->
+    <header class="header_section">
+    {{> nav}}
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class="slider_section ">
+       {{> section}}
+    </section>
+    <!-- end slider section -->
+  </div> 
+
+  <!-- menu section -->
+
+  <section class="food_section layout_padding-bottom">
+     {{> menu}}
+  </section>
+
+  <!-- end menu section -->
+
+
+  <!-- footer section -->
+  <footer class="footer_section">
+     {{> footer}}
+  </footer>
+  <!-- footer section -->
+
+  <!-- jQery -->
+   {{> script}}
+  <!-- End Google Map -->
+
+</body>
+
+</html>
