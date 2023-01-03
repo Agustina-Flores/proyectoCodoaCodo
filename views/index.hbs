@@ -26,7 +26,54 @@
   <!-- menu section -->
 
   <section class="food_section layout_padding-bottom">
-     {{> menu}}
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Nuestro Menu
+        </h2>
+      </div>
+
+      <ul class="filters_menu">
+        <li class="active" data-filter="*">All</li>
+        <li data-filter=".burger">Burger</li>
+        <li data-filter=".pizza">Pizza</li>
+        <li data-filter=".pasta">Pasta</li>
+        <li data-filter=".fries">Fries</li>
+      </ul>
+
+      <div class="filters-content">
+        <div class="row grid">
+          {{#each productos}}
+          <div class="col-sm-6 col-lg-4 all pizza">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src={{image}} alt="">
+                </div>
+                <div class="detail-box">
+                  <h5>
+                   {{title}}
+                  </h5>
+                  <p>
+                   {{description}}
+            
+                  </p>
+                  <div class="options">
+                    <h6>
+                     {{price}} $
+                    </h6>
+                  <a href="" class="button">Comprar</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+       {{/each}}
+      
+      </div>
+    </div>
+
+    
   </section>
 
   <!-- end menu section -->
