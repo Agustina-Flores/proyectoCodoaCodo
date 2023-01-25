@@ -1,4 +1,4 @@
-const productos = require('./data/productos.json');
+const productos = require('../data/productos.json');
 
 //FRONT
  

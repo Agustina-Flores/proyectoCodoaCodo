@@ -2,7 +2,7 @@
 //CONTROLADORES :LOGICA(funcion)
 //MODELO : DATA
 //VISTA : SOLO RUTA
-const productos = require('./data/productos.json');
+const productos = require('../data/productos.json');
 
  const adminGet = (req,res) =>{
 
