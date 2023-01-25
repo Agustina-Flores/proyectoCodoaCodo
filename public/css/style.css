@@ -5,7 +5,7 @@ body {
   background-color: #ffffff;
   overflow-x: hidden;
 }
-
+ 
 .layout_padding {
   padding: 90px 0;
 }
@@ -1018,3 +1018,50 @@ a:focus {
   margin: 4px 2px;
   cursor: pointer;
 }
+#backend h1 {
+	text-align:center;
+	padding: 10px;
+	background-color: rgb(101, 101, 106);
+	color: rgb(249, 241, 241);
+  font-family:  'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+/* Login */ 
+
+
+body.login {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+body.login .form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+body.login .form-signin .checkbox {
+  font-weight: 400;
+}
+
+body.login .form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+body.login .form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+body.login .form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+ 

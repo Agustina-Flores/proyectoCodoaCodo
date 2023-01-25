@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {{> head}}
+  
+</head>
+
+<body id="backend">
+ 
+    <h1>Panel de Administrador</h1>
+    <div class="container mb-4">
+
+
+
+        <div class="table-responsive mt-4">
+            <table class="table caption-top">
+                <h3>Lista de productos</h3>
+                </br>
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">#ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col" style="max-width: 30%">Descripcion</th>
+                        <th scope="col" style="max-width: 5%">Precio ($)</th>
+                        <th scope="col" style="max-width: 5%">Stock </th>
+                        <th scope="col" style="max-width: 5%">Acciones</th>
+                    </tr>
+                </thead>
+
+                  <tbody id="admin-productos">
+
+                    {{#each productos}}
+                    <tr>
+                        <th scope="row">{{id}}</th>
+                        <td>{{title}}</td>
+                        <td><img class="img-box" style="width: 100px; height: 100px;" src={{image}}>
+                        </td>
+                        <td class="descripcion">
+                            <div>{{description}}</div>
+                        </td>
+                         
+                        <td>$ {{price}}</td>
+                        <td>{{stock}}</td>
+                        <td>
+                            <a href="editar-producto.html">Editar </a><br>
+                            <a href="borrar/1">Borrar</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+
+            </table>
+
+             </br>
+            <a href="/agregar-productos" class="btn btn-info">Agregar producto</a>
+      <a href="/" class="btn btn-info">Volver a la Pagina Principal</a>
+        </div>
+
+    </div><!-- /container -->
+
+<!-- /footer -->
+    <!-- 
+    Essential Scripts
+    =====================================-->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+
+    </script>
+{{> script}}
+</body>
+
+</html>

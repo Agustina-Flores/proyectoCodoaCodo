@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     {{> head}}
+
+     <style>
+		.error {
+			background: red;
+			color: white;
+			padding: 10px;
+			display: none
+		}
+	</style>
+</head>
+<body class="login">
+    <main class="form-signin">
+        </br>
+		<form action="login" method="post">
+
+			<h3 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; text-align: center;">Acceso al panel de control</h3>
+            </br> 
+			<div class="form-floating">
+				 
+				<label for="username">Usuario</label>
+                <input type="email" class="form-control" id="username" placeholder="name@example.com" name="username">
+                </br>
+			</div>
+			<div class="form-floating">
+				 
+				<label for="password">Contraseña</label>
+                <input type="password" class="form-control" id="password" placeholder="Contraseña" name="password">
+                </br>
+			</div>
+
+
+			<button class="w-100 btn btn-lg btn-info" type="submit">Entrar</button>
+		</form>
+		<p class="error">Usuario o contraseña incorrecto</p>
+
+		
+
+	</main>
+
+
+    <script>
+
+        const usuario = "admin@gmail.com.ar"
+        const contrasenia = "12345"
+
+       
+		const boton = document.querySelector("button")
+
+        boton.addEventListener("click" , e =>{
+            e.preventDefault()
+            const usuarioIngresado= document.querySelector("#username").value
+             const contraseniaIngresada= document.querySelector("#password").value
+
+
+             const error = document.querySelector(".error")
+
+             if(usuario == usuarioIngresado && contrasenia == contraseniaIngresada)
+             {
+               window.location.href = "http://localhost:3000/admin";
+             }
+
+             else
+             {
+                error.style.display = "block"
+             }
+        })
+    </script>
+</body>
+</html>
