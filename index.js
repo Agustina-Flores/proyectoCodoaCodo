@@ -4,6 +4,8 @@ const hbs = require('hbs');
 const path = require('path');
 const rutasFront = require('./routes/front.js') 
 const rutasBack = require('./routes/back.js')
+ 
+
 
 hbs.registerPartials(__dirname + '/views/partials');//directorio hacia los parciales
 const port = 3000
