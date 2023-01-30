@@ -2,18 +2,34 @@
 //CONTROLADORES :LOGICA(funcion)
 //MODELO : DATA
 //VISTA : SOLO RUTA
-const productos = require('../data/productos.json');
+
+require('dotenv').config();
+
+const db = require('../models/connection')
+
+
 
  const adminGet = (req,res) =>{
 
-    res.render('admin',{
-       titulo:"Panel de administrador",
-       productos: productos[0].data
+   let sql = "SELECT* FROM productos"
+
+    db.query(sql,(err,data) =>{
+      if(err) throw err
+
+      console.log(data)
+
+      res.render('admin',{
+      titulo:"Panel de administrador",
+       productos:data
+       
     })
+ })
  }
+
 
  const agregarProductoGet =   (req,res) =>{
  
+    
     console.log("estas en agregar-producto")
     res.render('agregar-productos',{
     
