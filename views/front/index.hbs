@@ -54,10 +54,11 @@
                   <h5>
                    {{title}}
                   </h5>
-                  <p>
-                   {{description}}
-            
-                  </p>
+                  <ul>
+                   {{#listado description}}
+                   <li>{{this}}</li>
+                    {{/listado}}
+                  </ul>
                   <div class="options">
                     <h6>
                      {{price}} $

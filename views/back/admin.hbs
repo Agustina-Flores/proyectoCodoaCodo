@@ -36,10 +36,13 @@
                         <td>{{title}}</td>
                         <td><img class="img-box" style="width: 100px; height: 100px;" src={{image}}>
                         </td>
-                        <td class="descripcion">
-                            <div>{{description}}</div>
-                        </td>
-                         
+                        <td class="description"> 
+                       <ul>
+                        {{#listado description}}
+                        <li>{{this}}</li>
+                         {{/listado}}
+                          </ul>
+                        </td> 
                         <td>$ {{price}}</td>
                         <td>{{stock}}</td>
                         <td>
