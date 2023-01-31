@@ -10,7 +10,9 @@ router.get('/', frontController.getIndex )
  
 router.get('/about', frontController.getAbout )
 
-router.get('/book', frontController.getBook)
+router.get('/book', frontController.bookGet)
+
+router.post('/book', frontController.bookPost)
 
 router.get('/comprar', frontController.getComprar)
 

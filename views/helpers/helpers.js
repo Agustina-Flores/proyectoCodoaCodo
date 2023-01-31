@@ -4,9 +4,11 @@ const hbs=require('hbs');
 
 hbs.registerHelper('listado' , descripcion =>{
 
-    //pan,carne,lechuga
+  
 
     let arrayDescripcion = descripcion.split(',')
+    //['pan,carne','lechuga']
+    
     let html = "<ul></ul>"
     for(item of arrayDescripcion)
 

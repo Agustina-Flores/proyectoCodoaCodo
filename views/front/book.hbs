@@ -30,7 +30,11 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form_container">
-            <form action="https://formspree.io/f/moqbqjyg" method="post" class="needs-validation" id="contact-form" novalidate >
+
+            {{#if mostrar}}
+           <div class="text-center alert alert-{{clase}}" role="alert" >{{mensaje}}</div>
+            {{/if}}
+            <form action="/book" method="post" class="needs-validation" id="contact-form" novalidate >
               <div>
                 <input type="text" class="form-control" placeholder="Nombre" name="nombre" id="nombre" minlength="4" maxlength="15" required>
               </div>

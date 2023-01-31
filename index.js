@@ -10,6 +10,13 @@ require('./views/helpers/helpers.js')
 hbs.registerPartials(__dirname + '/views/partials');//directorio hacia los parciales
 const port = 3000
 
+//middlewares para tomar los datos del formulario
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: false
+}));
+
+
 app.set('view engine','hbs');
 
 //creamos arreglo, y adjunto rutas con join

@@ -1,6 +1,7 @@
 
 require('dotenv').config();
 const db = require('../models/connection.js');
+const nodemailer = require('nodemailer');
 
 //FRONT
  
@@ -26,6 +27,63 @@ const getIndex = (req,res) =>{
  
 }
 
+const bookPost = (req,res) =>{
+
+     
+    const info = req.body
+    
+   const transporter = nodemailer.createTransport({
+        service: 'gmail',
+       
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS
+        }
+      });
+
+
+      const mailOptions = {
+        from: info.email,
+        to: 'agustina.flores.mail@gmail.com',
+        subject: info.nombre,
+        html: `
+            <h1> RESERVA </h1>
+            <h2>Nombre : ${info.nombre}</h2>
+            <h2>Reserva para : ${info.cantidad} personas</h1>
+            <h2>Telefono : ${info.telefono}</h2>
+        `
+
+       
+      };
+
+     
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            res.status(500).render('book',{
+                mensaje:`Ha ocurrido el siguiente error ${error.message}`,
+                mostrar:true,
+                clase:'danger'
+            })
+        } else {
+            res.status(200).render('book', {
+            mensaje:"Mail enviado correctamente",
+            mostrar:true,
+            clase:'sucess'
+
+           })
+        }
+      });
+      
+}
+
+const bookGet = (req,res) =>{
+
+    //indica nombre del archivo hbs,objeto
+   res.render('book',{
+    titulo:"Reservas"
+   })
+}
+
 const getAbout = (req,res) =>{
 
     //indica nombre del archivo hbs,objeto
@@ -34,13 +92,7 @@ const getAbout = (req,res) =>{
    })
 }
 
-const getBook = (req,res) =>{
-
-    //indica nombre del archivo hbs,objeto
-   res.render('book',{
-    titulo:"Reservas"
-   })
-}
+ 
 
 const getComprar =(req,res) =>{
 
@@ -53,7 +105,9 @@ const getComprar =(req,res) =>{
 module.exports =
 {
     getIndex,
+    bookPost,
+    bookGet,
     getAbout,
     getComprar,
-    getBook
+   
 }
