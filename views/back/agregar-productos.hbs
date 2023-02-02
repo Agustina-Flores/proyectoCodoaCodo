@@ -19,41 +19,53 @@
 </head>
 
 
-<body id="backend">
-    <h1>Agregar Producto</h1>
+<body id="backend" style="background-color: rgb(228, 176, 220);">
+    <h1>Formulario: Agregar Producto</h1>
+    <h2>{{titulo}} </h2>
     </br>
-    <div class="container mb-4">
+    <div class="container mb-4" >
  
 
 
         <div class="agregar-producto mt-4" style="text-align: center;">
             {{#if mensaje}}
-            <h3>{{mensaje}}
+            <p>{{mensaje}}
             {{/if}}
-           <form action="/agregar" method="post" id="form1"  >
-             <label for="nombre" style="padding: right 5px; " > <b> Nombre : </b> </label> 
-            <input type="text" style="margin-left: 80px;" id="nombre" placeholder="Nombre del producto" name="nombre"><br><br>
+           <form action="/agregar-productos" method="post" id="form1"  >
+             <label for="title" style="padding: right 5px; " > <b> Nombre : </b> </label> 
+            <input type="text" style="margin-left: 80px;" id="title" placeholder="Nombre del producto" name="title"><br><br>
  
-             <label for="precio" style="padding: right 10px; "> <b> Precio : </b> </label> 
-            <input type="text" style="margin-left: 90px;"  id="precio" placeholder="Precio del producto" name="precio"><br><br><br>
+             <label for="price" style="padding: right 10px; "> <b> Precio : </b> </label> 
+            <input type="text" style="margin-left: 90px;"  id="price" placeholder="Precio del producto" name="price"><br><br><br>
 
-           <label for="descripcion" style="padding: right 10px; "> <b> Descripcion :</b></label> 
-            <textarea type="text"  style="margin-left: 45px;"  id="descripcion" placeholder="Descripcion " name="descripcion"><br><br><br>
+           <label for="description" style="padding: right 10px; "> <b> Descripcion : </b></label> 
+            <textarea type="text"  cols="20" rows="6" style="margin-left: 45px "  id="description" placeholder="Descripcion " name="description"> 
             </textarea><br><br><br>
 
+
+         <label for="stock" style="padding: right 5px; " > <b> Stock : </b> </label> 
+            <input type="number" style="margin-left: 80px;" id="stock" placeholder="Stock" name="stock"><br><br>
+ 
+            <!--
            <label for="imagenDeProducto" class="form-label btn btn-primary">Subir Imagen :</label>
             <div class="preview">
              <p>No hay imagen seleccionada para subir</p>
               <input class="form-control" type="file" id="imagenDeProducto" name="imagenDeProducto"
             accept=".png,.jpg,.jpeg" required>
              </div>
- 
-            </form>
-             
-                <button type="submit" class="btn btn-info">Agregar</button>
-                <a href="/admin" class="btn btn-info">Volver al listado de productos</a>
-                <a href="/" class="btn btn-info">Volver a la Pagina Principal</a>
-            
+                -->
+            <div class="col-12" id="">
+          <label for="image" class="form-label">URL imagen</label>
+           <input class="form-control" type="text" id="image" name="image" required>
+            </div>
+
+           </br>
+               </br>
+                 </br>
+                <button type="submit" class="btn btn-secondary">Agregar</button>
+                <a href="/admin" class="btn btn-secondary">Volver al listado de productos</a>
+                <a href="/" class="btn btn-secondary">Volver a la Pagina Principal</a>
+              </form>
         </div>
     </div>
 

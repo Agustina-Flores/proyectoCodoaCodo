@@ -37,16 +37,16 @@ const db = require('../models/connection')
  }
 
  const agregarProductoPOST = (req,res) =>{
-   const info=req.body
+   const info= req.body
    const sql = "INSERT INTO productos SET ?"
-
-   db.query(sql,info,(err,data) =>{
+   console.log("agregarProductoPost")
+   db.query(sql,info,(err,data) => {
       if(err) throw err
 
       console.log("Producto agregado")
-      res.render('agregar-productos',{
+      res.render("agregar-productos", {
          mensaje: "Producto agregado",
-         titulo:"Agregar producto"
+         titulo:"Producto agregado a la lista"
       })
    })
 
@@ -71,8 +71,8 @@ const db = require('../models/connection')
 module.exports={
     adminGet,
     agregarProductoGet,
-    editarProductoGet,
     agregarProductoPOST,
+    editarProductoGet,
     loginGet
 }
 
