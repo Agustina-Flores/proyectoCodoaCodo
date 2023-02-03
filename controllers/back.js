@@ -53,12 +53,49 @@ const db = require('../models/connection')
  }
  const editarProductoGet = (req,res) =>{
  
-    console.log("estas en editar-producto")
-    res.render('editar-producto',{
-    
-    })
+   const id = req.params.id
+   const sql = "SELECT * FROM productos WHERE id = ?"
+
+   db.query(sql, id,(err,data) =>{
+      if(err) throw err
+      console.log(data[0])
+      if(data.length > 0)
+      {
+         res.render('editar-producto',{
+            producto:data[0]
+      })
+      }else{
+        res.send(
+        `<h1>No existe el producto con id ${id} </h1>
+        <a href="/admin"> Volver al listado de productos </a>
+        `
+        )
+         } 
+      })
+ 
+ 
  }
 
+ const editarProductoPost = (req,res) =>{
+
+ const id = req.params.id
+ const producto = req.body
+
+const sql = "UPDATE productos SET ? WHERE id = ?"
+
+db.query(sql, [producto, id], (err,data) =>{
+
+   if(err) throw err 
+   console.log("ACTUALIZAR DATA",data)
+   console.log(`${data.affectedRows} registro actualizado`)
+   
+   res.render("agregar-productos", {
+      mensaje: "Producto actualizado",
+    
+   })
+})
+
+ }
  const loginGet = (req,res) =>{
  
     console.log("estas en login")
@@ -73,6 +110,7 @@ module.exports={
     agregarProductoGet,
     agregarProductoPOST,
     editarProductoGet,
+    editarProductoPost,
     loginGet
 }
 
