@@ -89,13 +89,27 @@ db.query(sql, [producto, id], (err,data) =>{
    console.log("ACTUALIZAR DATA",data)
    console.log(`${data.affectedRows} registro actualizado`)
    
-   res.render("agregar-productos", {
+   res.render("editar-producto", {
       mensaje: "Producto actualizado",
     
    })
 })
 
  }
+
+ const borrarProductoGET = (req,res) =>{
+
+   const id =req.params.id
+   const sql = "DELETE from productos WHERE id = ?"
+   db.query(sql,id, (err,data) =>{
+      if(err) throw err
+      console.log(data.affectedRows + " registro borrado")
+      res.redirect('/admin');
+   })
+ }
+
+
+
  const loginGet = (req,res) =>{
  
     console.log("estas en login")
@@ -111,6 +125,7 @@ module.exports={
     agregarProductoPOST,
     editarProductoGet,
     editarProductoPost,
+    borrarProductoGET,
     loginGet
 }
 
