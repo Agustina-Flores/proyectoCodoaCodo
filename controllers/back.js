@@ -11,35 +11,64 @@ const db = require('../models/connection')
 
  const adminGet = (req,res) =>{
 
-   let sql = "SELECT* FROM productos"
+   const logueado = req.session.logueado // seria true si esta logueado o seria null
 
-    db.query(sql,(err,data) =>{
-      if(err) throw err
+   if(logueado)
+   {
 
-      console.log(data)
+      let sql = "SELECT * FROM productos"
 
-      res.render('admin',{
-      titulo:"Panel de administrador",
-       productos:data
-       
-    })
- })
+      db.query(sql,(err,data) =>{
+        if(err) throw err
+    
+        res.render('admin',{
+        titulo:"Panel de administrador",
+        logueado: logueado,// true
+          usuario: req.session.nombreUsuario,
+         productos:data
+         
+      })
+   })
+   }
+    else
+    {
+      res.redirect('/login')
+    }
  }
 
 
  const agregarProductoGet =   (req,res) =>{
  
+   const logueado = req.session.logueado // seria true si esta logueado o seria null
+
+
+    if(logueado)
+   {
+
+      let sql = "SELECT * FROM productos"
+
+      db.query(sql,(err,data) =>{
+        if(err) throw err
     
-    console.log("estas en agregar-producto")
-    res.render('agregar-productos',{
-    
-    })
+        res.render('agregar-productos',{
+        
+        logueado: logueado,// true
+          usuario: req.session.nombreUsuario,
+         productos:data
+         
+      })
+   })
+   }
+    else
+    {
+      res.redirect('/login')
+    }
  }
 
  const agregarProductoPOST = (req,res) =>{
    const info= req.body
    const sql = "INSERT INTO productos SET ?"
-   console.log("agregarProductoPost")
+ 
    db.query(sql,info,(err,data) => {
       if(err) throw err
 
@@ -53,6 +82,10 @@ const db = require('../models/connection')
  }
  const editarProductoGet = (req,res) =>{
  
+   
+   
+   
+
    const id = req.params.id
    const sql = "SELECT * FROM productos WHERE id = ?"
 
@@ -118,6 +151,44 @@ db.query(sql, [producto, id], (err,data) =>{
     })
  }
 
+ const loginPost = (req,res) =>{
+
+   const usuario = req.body.usuario
+   const clave = req.body.clave
+
+   if(!usuario == "" && !clave == "")
+   {
+      const sql = "SELECT * FROM cuentas WHERE usuario = ? AND clave = ?"
+      
+
+      db.query(sql, [usuario,clave] , (err,data) =>{
+
+         if(data.length > 0)
+         {
+            req.session.logueado = true // Creamos una propiedad llamada "logueado" para que el objeto session almacene el valor "TRUE" y es para usarlo en el parcial de "header"
+            req.session.nombreUsuario = usuario
+
+
+            //si todo esta bien q redirija al admin
+            res.redirect('/admin')
+
+         } else {
+            res.render('login' , {
+
+               titulo:"Login",
+               error: "Nombre de usuario o contraseña incorrectos"
+            })
+         }
+ 
+      })
+   }  else  {
+      res.render("login", {
+         titulo: "Login",
+         error: "Por favor escribe un nombre de usuario y clave"
+      })
+   }
+
+ }
 
 module.exports={
     adminGet,
@@ -126,7 +197,8 @@ module.exports={
     editarProductoGet,
     editarProductoPost,
     borrarProductoGET,
-    loginGet
+    loginGet,
+    loginPost
 }
 
 

@@ -12,6 +12,7 @@ router.get('/admin', backController.adminGet)
  router.post('/editar-producto/:id', backController.editarProductoPost)
  router.get('/borrar/:id', backController.borrarProductoGET)
  router.get('/login', backController.loginGet)
+ router.post('/login', backController.loginPost)
  
  
   module.exports=router

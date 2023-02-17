@@ -19,6 +19,9 @@
 
 </head>
 <body id="backend" style="background-color: rgb(214, 148, 208);">
+    <header class="header_section">
+      {{> nav}}
+    </header>
     <h1>Editando: {{producto.title}}</h1>
     </br>
     <div class="container mb-4">
@@ -46,20 +49,44 @@
          <label for="stock" style="padding: right 5px; " > <b> Stock : </b> </label> 
             <input type="number" style="margin-left: 80px;" id="stock" value={{producto.stock}} name="stock"><br><br>
   
-            <div class="col-12" id="">
-          <label for="image" class="form-label">URL imagen</label>
-           <input class="form-control" type="text" id="image" value={{producto.image}} name="image"   required>
-            </div>
+       <div class="mb-3 col-12 editar" id="imagenCargada">
+       <label for="image" class="form-label">Imagen</label>
 
+      <img src="/uploads/images.jpg" alt="" class="img-fluid">
+
+      <input class="form-control" type="file" id="image" name="image" style="display:none" accept=".png,.jpg,.jpeg">
+     </div>
            </br>
                </br>
-                 </br>
+               
                 <button type="submit" class="btn btn-secondary">Actualizar</button>
                 <a href="/admin" class="btn btn-secondary">Volver al listado de productos</a>
                 <a href="/" class="btn btn-secondary">Volver a la Pagina Principal</a>
               </form>
         </div>
     </div>
+ <footer class="footer_section">
+    {{> footer}}
+  </footer>
 
+  <script>
+        // https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications
+        const contenedor = document.querySelector("#imagenCargada")
+        const elInput = document.querySelector("#image"); //toma la imagen
+
+        //cuando se haga click en cualquier parte del contenedor<div> Imagen </div>
+        //va a checkear si el imput tiene algo y va a ejecutar un click
+        //selecciona la imagen y la oculta
+        //muestra el imput
+        //y va a remover la clase editar
+        contenedor.addEventListener("click", function (e) {
+            if (elInput) {
+                elInput.click();
+                document.querySelector("#imagenCargada img").style.display = "none";
+                elInput.style.display = "block"
+                contenedor.classList.remove("editar")
+            }
+        }, false);
+  </script>
 </body>
 </html>

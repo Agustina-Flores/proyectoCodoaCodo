@@ -2,7 +2,7 @@
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="index.html">
             <span>
-              Feane
+              Urban Food
             </span>
           </a>
 
@@ -27,9 +27,11 @@
               
             </ul>
             <div class="user_option">
-              
-           
-              <a class="nav-link" href="#"><span class="fas fa-sign-in-alt"></span> Login</a>
+             {{#if logueado}}
+             <a href="/logout">LOGOUT: {{usuario}}</a> | <a href="/admin">ADMIN</a> 
+                {{else}}
+                    <a href="/login">LOGIN </a>
+                {{/if}}
         
 
              

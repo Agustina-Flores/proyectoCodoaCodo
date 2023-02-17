@@ -4,8 +4,18 @@ const hbs = require('hbs');
 const path = require('path');
 const rutasFront = require('./routes/front.js') 
 const rutasBack = require('./routes/back.js')
+const session = require('express-session')
 require('./views/helpers/helpers.js')
 
+
+//Sesiones mediante cookies
+
+app.use(session({
+  secret: process.env.SESION_SECRET,
+  resave: true,
+  saveUninitialized: false,
+  cookie: { maxAge: 300000 } //DURA 5 minutos
+}))
 
 hbs.registerPartials(__dirname + '/views/partials');//directorio hacia los parciales
 const port = 3000

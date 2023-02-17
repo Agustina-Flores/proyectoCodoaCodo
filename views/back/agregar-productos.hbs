@@ -20,6 +20,9 @@
 
 
 <body id="backend" style="background-color: rgb(228, 176, 220);">
+   <header class="header_section">
+      {{> nav}}
+    </header>
     <h1>Formulario: Agregar Producto</h1>
     <h2>{{titulo}} </h2>
     </br>
@@ -48,12 +51,14 @@
  
          
             <div class="col-12" id="">
-          <label for="image" class="form-label">URL imagen</label>
-           <input class="form-control" type="text" id="image" name="image" required>
+          <label for="image" class="form-label btn btn-primary">Subir imagen</label>
+           <div class="preview">
+             <p>No hay imagen seleccionada para subir</p>
+              
+            <input class="form-control" type="file" id="image" name="image" accept=".png,.jpg,.jpeg" required>
+          </div>
             </div>
-
-           </br>
-               </br>
+             </br>
                  </br>
                 <button type="submit" class="btn btn-secondary">Agregar</button>
                 <a href="/admin" class="btn btn-secondary">Volver al listado de productos</a>
@@ -62,6 +67,59 @@
         </div>
     </div>
 
-<!-- /footer -->
+ <footer class="footer_section">
+    {{> footer}}
+  </footer>
+
+  <script>
+    const image = document.querySelector('#image');
+    const preview = document.querySelector('.preview');
+
+     image.style.opacity = 0;
+        image.addEventListener('change', updateImageDisplay);
+
+        console.log("preview.firstChild", preview.firstChild)
+
+        function updateImageDisplay() {
+            while (preview.firstChild) {
+                preview.removeChild(preview.firstChild);
+            }
+
+            const curFiles = image.files;
+            console.log("curFiles: ", curFiles)
+            if (curFiles.length === 0) {
+                const para = document.createElement('p');
+                para.textContent = 'No hay una imagen seleccionada para subir';
+                preview.appendChild(para);
+            } else {
+                const list = document.createElement('ol');
+                preview.appendChild(list);
+
+                for (const file of curFiles) {
+                    const listItem = document.createElement('li');
+                    const para = document.createElement('p');
+                    para.textContent = `Archivo ${file.name}, tamaño ${returnFileSize(file.size)}.`;
+                    const img = document.createElement('img');
+                    img.src = URL.createObjectURL(file);
+
+                    listItem.appendChild(img);
+                    listItem.appendChild(para);
+
+
+                    list.appendChild(listItem);
+                }
+            }
+        }
+
+         function returnFileSize(number) {
+            if (number < 1024) {
+                return number + 'bytes';
+            } else if (number >= 1024 && number < 1048576) {
+                return (number / 1024).toFixed(1) + 'KB';
+            } else if (number >= 1048576) {
+                return (number / 1048576).toFixed(1) + 'MB';
+            }
+        }
+  </script>
 </body>
 </html>

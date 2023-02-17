@@ -1064,4 +1064,28 @@ body.login .form-signin input[type="password"] {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
- 
+#imagenCargada {
+  position: relative;
+}
+#imagenCargada.editar:hover {
+  cursor: pointer;
+}
+#imagenCargada.editar:hover::after {
+  display: block;
+  background-color: rgba(255,255,255);
+}
+#imagenCargada.editar::after {
+position: absolute;
+content: "Editar";
+display: none;
+top: calc(50% - 22px);
+left: calc(50% - 36px);
+width: 75px;
+height: 45px;
+color: black;
+background-color: rgba(255,255,255,0);
+padding: 10px;
+box-shadow: 5px 5px 10px #444444;
+text-transform: uppercase;
+transition: all 0.5s
+}
