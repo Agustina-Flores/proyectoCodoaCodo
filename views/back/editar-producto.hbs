@@ -29,7 +29,7 @@
          <div class="editar-producto mt-4" style="text-align: center;" >
 
 
-           <form action="/editar-producto/{{producto.id}}" method="post" id="form1"  >
+           <form action="/editar-producto/{{producto.id}}" method="post" id="form1" enctype="multipart/form-data" >
 
             {{#if mensaje}}
             <p>{{mensaje}}
@@ -52,7 +52,7 @@
        <div class="mb-3 col-12 editar" id="imagenCargada">
        <label for="image" class="form-label">Imagen</label>
 
-      <img src="/uploads/images.jpg" alt="" class="img-fluid">
+      <img src="/uploads/{{producto.image}}" alt="" class="img-fluid">
 
       <input class="form-control" type="file" id="image" name="image" style="display:none" accept=".png,.jpg,.jpeg">
      </div>

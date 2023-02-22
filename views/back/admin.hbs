@@ -31,12 +31,12 @@
                 </thead>
 
                   <tbody id="admin-productos">
-
+                    {{#if productos}}
                     {{#each productos}}
                     <tr>
                         <th scope="row">{{id}}</th>
                         <td>{{title}}</td>
-                        <td><img class="img-box" style="width: 100px; height: 100px;" src={{image}}>
+                        <td><img class="img-box" style="width: 100px; height: 100px;" src="/uploads/{{image}}" alt="imagen de {{title}}">
                         </td>
                         <td class="description"> 
                        <ul>
@@ -58,7 +58,12 @@
                              
                         </td>
                     </tr>
-                    {{/each}}
+                    {{/each}}                
+                    {{else}}
+                    <tr>
+                      <td>No hay productos cargados actualmente</td>
+                    </tr>
+                   {{/if}}
                 </tbody>
 
             </table>

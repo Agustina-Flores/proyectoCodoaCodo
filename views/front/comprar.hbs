@@ -3,6 +3,7 @@
 
 <head>
     {{> head}}
+    <link  rel="stylesheet" href="style.css"></link>
 </head>
 
 <body class="sub_page">
@@ -17,45 +18,23 @@
     </header>
     <!-- end header section -->
   </div>
-
-
-    <section class="d-flex justify-content-center align-content-center my-5">
-        <h1 class="page-name text-info">Cómo comprar</h1>
-    </section>
-
-    <section class="page-wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h2>Cómo comprar</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, repudiandae.</p>
-                    <p>admin@mail.com</p>
-                </div>
-                <div class="col-md-8">
-                    <h4>Proceso de compra</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas iusto, alias, tempora fuga
-                        quam
-                        eveniet neque excepturi aliquid. Eligendi, mollitia.</p>
-                    <h4>Envios</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam voluptatibus, incidunt similique
-                        nobis sint quisquam nam ab error consequuntur sit ullam ex eum exercitationem, excepturi
-                        explicabo
-                        beatae eos aspernatur odit ad perspiciatis, neque saepe magni enim. Maiores quia, quae sequi.
-                    </p>
-                    <h4>Medios de pago</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus repellat id, laboriosam
-                        ipsa
-                        repudiandae quisquam, suscipit officiis, praesentium itaque facilis distinctio dolorum. Velit
-                        reiciendis libero laudantium corporis, delectus impedit sunt.</p>
-                    <h4>Devoluciones</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam eaque nam, ab voluptas et
-                        debitis
-                        sint hic vel ratione dignissimos.</p>
-
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="full-img" id="fullImgBox">
+    <img src="images/gimage1.jpg" id="fullImg">
+    <span onclick="closeFullImg()">X</span>
+  </div>
+    <div class="img-gallery">
+        <img src="images/gimage1.jpg" onclick="openFullImg(this.src)">
+         <img src="images/gimage2.jpg" onclick="openFullImg(this.src)">
+          <img src="images/gimage3.jpg" onclick="openFullImg(this.src)">
+           <img src="images/gimage4.jpg" onclick="openFullImg(this.src)">
+            <img src="images/gimage5.jpg" onclick="openFullImg(this.src)">
+             <img src="images/gimage6.jpg" onclick="openFullImg(this.src)">
+              <img src="images/gimage7.jpg" onclick="openFullImg(this.src)">
+               <img src="images/gimage8.jpg" onclick="openFullImg(this.src)">
+    </div>
+    <div>
+    </div>
+  
 
    <!-- footer section -->
   <footer class="footer_section">
@@ -68,8 +47,26 @@
     =====================================-->
     <!-- Option 1: Bootstrap Bundle with Popper -->
  {{> script}}
+<script>
 
 
+var fullImgBox = document.getElementById("fullImgBox");
+var fullImg = document.getElementById("fullImg");
+
+function openFullImg(pic)
+{
+    fullImgBox.style.display="flex";
+    fullImg.src = pic;
+}
+
+function closeFullImg()
+{
+   fullImgBox.style.display="none"; 
+   
+}
+
+</script>
+ 
 </body>
 
 </html>
