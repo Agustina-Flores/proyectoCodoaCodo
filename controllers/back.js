@@ -44,41 +44,28 @@ const  { multer,
 
  const agregarProductoGet =   (req,res) =>{
 
+   const logueado = req.session.logueado
+
+   if(logueado)
+   {
    console.log("estas en agregar")
 	res.render('agregar-productos', {
 		
 	})
-
- /*
-   const logueado = req.session.logueado // seria true si esta logueado o seria null
-
-
-    if(logueado)
-   {
-
-      let sql = "SELECT * FROM productos"
-
-      db.query(sql,(err,data) =>{
-        if(err) throw err
-    
-        res.render('agregar-productos',{
-        
-        logueado: logueado,// true
-          usuario: req.session.nombreUsuario,
-         productos:data
-         
-      })
-   })
-   }
-    else
-    {
+   }else{
       res.redirect('/login')
-    }
-    */
- }
+   }
+
+}
+  
 
  const agregarProductoPOST = (req,res) =>{
  
+   const logueado = req.session.logueado
+
+   if(logueado)
+   {
+
     
 	upload(req, res, err => {
 		if (err instanceof multer.MulterError) {
@@ -110,7 +97,7 @@ const  { multer,
 			if (err) throw err;
 			res.render("agregar-productos", {
 				mensaje: "Producto agregado correctamente",
-				titulo: 'Agregar producto',
+				
 				clase: "success"
 			})
 		})
@@ -118,11 +105,19 @@ const  { multer,
 	})
 
 }
+else
+{
+   res.redirect('/login')
+}
+
+}
 
  const editarProductoGet = (req,res) =>{
  
+   const logueado = req.session.logueado
 
-
+   if(logueado)
+   { 
    const id = req.params.id
    const sql = "SELECT * FROM productos WHERE id = ?"
 
@@ -142,13 +137,21 @@ const  { multer,
         )
          } 
       })
- 
- 
+   }
+   else
+   {
+      res.redirect('/login')
+   }
  }
 
  const editarProductoPost = (req,res) =>{
 
-   
+   const logueado = req.session.logueado
+
+   if(logueado)
+   { 
+
+    
 	upload(req, res, function (err) {
 		if (err instanceof multer.MulterError) {
 			// Error de Multer al subir imagen
@@ -217,11 +220,23 @@ const  { multer,
 }
 
 })
+}
 
+else
+{
+   res.redirect('/login')
+}
 }
 
  const borrarProductoGET = (req,res) =>{
 
+   const logueado = req.session.logueado
+
+   if(logueado)
+   { 
+
+
+   
     // /borrar/1
 	const id = req.params.id
 
@@ -241,8 +256,11 @@ const  { multer,
 			});
 		});
 	})
-
-
+}
+else
+{
+   res.redirect('/login')
+}
  }
 
 
