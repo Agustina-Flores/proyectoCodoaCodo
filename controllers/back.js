@@ -27,7 +27,7 @@ const  { multer,
         if(err) throw err
     
         res.render('admin',{
-        titulo:"Panel de administrador",
+        titulo:"Panel de administrador.",
         logueado: logueado,// true
           usuario: req.session.nombreUsuario,
          productos:data
