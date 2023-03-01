@@ -26,7 +26,7 @@ var pool = mysql.createPool({
   port: process.env.DB_PORT, 
   database:process.env.DB_DATABASE,
   connectTimeout: 30000,
-  
+   
 });
 
 pool.getConnection(err => {
@@ -38,9 +38,21 @@ pool.getConnection(err => {
  
 // truco para mantener la conexión
 setInterval(function () {
-  pool.query('SELECT 1');
+  keepConnectionAlive();
+  //pool.query('SELECT 1');
   //console.log("manteniendo viva la conexion")
 }, 50000);
  
-
+function keepConnectionAlive() {
+  let sql = 'SELECT 1';
+  sql = mysql.format(sql);
+  pool.query(sql, function (err, rows) {
+    if (err) {
+      console.error('Error Keeping connection Alive =>', err);
+      // throw err
+    } else {
+      //console.log('Keep connection Alive =>', rows);
+    }
+  });
+}
 module.exports=pool;

@@ -7,7 +7,7 @@ const rutasBack = require('./routes/back.js')
 const session = require('express-session')
 require('./views/helpers/helpers.js')
 
-app.set('trust proxy', 1);
+
 //Sesiones mediante cookies
 
 app.use(session({
