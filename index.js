@@ -13,7 +13,7 @@ require('./views/helpers/helpers.js')
 app.use(session({
   secret: process.env.SESION_SECRET || 'keyboard cat', 
   resave: true,
-  saveUninitialized: false,
+  saveUninitialized: true ,
   cookie: {maxAge: 300000 } //DURA 5 minutos
 }))
 
