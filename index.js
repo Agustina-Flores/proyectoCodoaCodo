@@ -14,7 +14,7 @@ app.use(session({
   secret: process.env.SESION_SECRET,
   resave: true,
   saveUninitialized: false,
-  cookie: { zmaxAge: 300000 } //DURA 5 minutos
+  cookie: {  maxAge: 300000 } //DURA 5 minutos
 }))
 
 hbs.registerPartials(__dirname + '/views/partials');//directorio hacia los parciales
