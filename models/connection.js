@@ -26,13 +26,13 @@ var pool = mysql.createPool({
   port: process.env.DB_PORT, 
   database:process.env.DB_DATABASE,
   connectTimeout: 30000,
-  acquireTimeout: 20000
+   
 });
 
 pool.getConnection(err => {
   if (err) throw err
   console.log('DB esta conectada')
-
+pool.end();
    
 });
 
