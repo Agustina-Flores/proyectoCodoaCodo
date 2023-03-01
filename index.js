@@ -7,14 +7,16 @@ const rutasBack = require('./routes/back.js')
 const session = require('express-session')
 require('./views/helpers/helpers.js')
 
-
+app.set('trust proxy', 1);
 //Sesiones mediante cookies
 
 app.use(session({
   secret: process.env.SESION_SECRET,
-  resave: true,
-  saveUninitialized: false,
-  cookie: { maxAge: 300000 } //DURA 5 minutos
+  resave: false,
+  saveUninitialized: true,
+  cookie: { 
+    secure :true,
+    maxAge: 600000 } //DURA 5 minutos
 }))
 
 hbs.registerPartials(__dirname + '/views/partials');//directorio hacia los parciales
