@@ -25,7 +25,8 @@ var pool = mysql.createPool({
   password:process.env.DB_PASSWORD,
   port: process.env.DB_PORT, 
   database:process.env.DB_DATABASE,
-  connectTimeout: 30000
+  connectTimeout: 30000,
+  acquireTimeout: 20000
 });
 
 pool.getConnection(err => {
