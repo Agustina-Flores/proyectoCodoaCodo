@@ -11,10 +11,10 @@ require('./views/helpers/helpers.js')
 //Sesiones mediante cookies
 
 app.use(session({
-  secret: process.env.SESION_SECRET,
+  secret: process.env.SESION_SECRET || 'keyboard cat', 
   resave: true,
   saveUninitialized: false,
-  cookie: {  maxAge: 300000 } //DURA 5 minutos
+  cookie: {maxAge: 300000 } //DURA 5 minutos
 }))
 
 hbs.registerPartials(__dirname + '/views/partials');//directorio hacia los parciales
