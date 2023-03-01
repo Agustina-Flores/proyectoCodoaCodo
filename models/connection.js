@@ -20,7 +20,7 @@ connection.connect(err => {
 // truco para mantener la conexión
 setInterval(function () {
   connection.query('SELECT 1');
-  //console.log("manteniendo viva la conexion")
+ console.log("manteniendo viva la conexion")
 }, 50000);
 
 
