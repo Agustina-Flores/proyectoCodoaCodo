@@ -13,7 +13,7 @@ const getIndex = (req,res) =>{
     db.query(sql,(err,data) =>{
         if(err) throw err 
 
-        console.log(data)
+       // console.log(data)
 
             //indica nombre del archivo hbs,objeto
         res.render('index',{
