@@ -6,7 +6,7 @@ const rutasFront = require('./routes/front.js')
 const rutasBack = require('./routes/back.js')
 const session = require('express-session')
 require('./views/helpers/helpers.js')
-
+//const port = 3000
 
 //Sesiones mediante cookies
 
@@ -18,7 +18,7 @@ app.use(session({
 }))
 
 hbs.registerPartials(__dirname + '/views/partials');//directorio hacia los parciales
-const port = 3000
+ 
 
 //middlewares para tomar los datos del formulario
 app.use(express.json());
@@ -48,6 +48,6 @@ app.use((req,res,next) =>{
 })
 
  
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+app.listen(process.env.PORT, () => {
+    console.log(`Example app listening on port ${process.env.PORT}`)
 })
