@@ -26,21 +26,21 @@ var pool = mysql.createPool({
   port: process.env.DB_PORT, 
   database:process.env.DB_DATABASE,
   connectTimeout: 30000,
-   
+  
 });
 
 pool.getConnection(err => {
   if (err) throw err
   console.log('DB esta conectada')
-pool.end();
+ 
    
 });
-
+ 
 // truco para mantener la conexión
 setInterval(function () {
   pool.query('SELECT 1');
   //console.log("manteniendo viva la conexion")
 }, 50000);
-
+ 
 
 module.exports=pool;
