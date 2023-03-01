@@ -12,11 +12,9 @@ require('./views/helpers/helpers.js')
 
 app.use(session({
   secret: process.env.SESION_SECRET,
-  resave: false,
-  saveUninitialized: true,
-  cookie: { 
-    secure :true,
-    maxAge: 600000 } //DURA 5 minutos
+  resave: true,
+  saveUninitialized: false,
+  cookie: { zmaxAge: 300000 } //DURA 5 minutos
 }))
 
 hbs.registerPartials(__dirname + '/views/partials');//directorio hacia los parciales
