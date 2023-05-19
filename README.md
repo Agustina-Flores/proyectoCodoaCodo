@@ -7,7 +7,11 @@ Además la pagina cuenta con una sección sobre nosotros, galería de imágenes
 y una sección para hacer reservas mediante el modulo Nodemailer.
 
 Stack 🛠️
-Front-end: JavaScript,HTML, CSS, Bootstrap.
-Back-end: Node Js, Express. 
-Base de datos: MYSQL
-Plataforma : Railway 
+JavaScript
+HTML
+CSS
+Bootstrap
+Node Js
+Express 
+MYSQL
+Railway 
