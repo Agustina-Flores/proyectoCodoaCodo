@@ -1,4 +1,5 @@
-# proyectoCodoaCodo
+
+Proyecto Final Codo a Codo
 
 Pagina de un restaurante, centrada en la venta de comida rápida.
 La misma cuenta con un login para el registro del administrador. 
